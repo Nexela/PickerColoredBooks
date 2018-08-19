@@ -53,7 +53,6 @@ local function change_book_color(event)
         ent_on_ground.destroy()
     end
 end
+Event.register('picker-blueprint-colorchange', change_book_color)
 
-if settings.startup['picker-colored-books'].value then
-    Event.register('picker-blueprint-colorchange', change_book_color)
-end
+remote.add_interface(script.mod_name, require('__PickerExtended__/interface'))

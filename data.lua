@@ -9,16 +9,15 @@
 
 local Data = require('__stdlib__/data/data')
 local colors = require('config')
-local use_books = settings.startup['picker-colored-books'].value
 
 local function make_icons(color)
     return {
         {
-            icon = '__PickerExtended__/graphics/blueprint-book.png',
+            icon = '__PickerColoredBooks__/graphics/blueprint-book.png',
             icon_size = 32
         },
         {
-            icon = '__PickerExtended__/graphics/blueprint-book-layer.png',
+            icon = '__PickerColoredBooks__/graphics/blueprint-book-layer.png',
             icon_size = 32,
             tint = color
         }
@@ -30,19 +29,16 @@ local book = Data('blueprint-book', 'blueprint-book'):set('icons', make_icons({r
 book.flags = book:Flags() + 'hidden'
 
 --Add in the aditional colors
-if use_books then
-    for name, color in pairs(colors) do
-        book:copy(name .. '-book'):set_fields {
-            icons = make_icons(color),
-            localised_name = {'item-name.colored-book', {'colors.' .. name}},
-            show_in_library = false
-        }
-    end
+for name, color in pairs(colors) do
+    book:copy(name .. '-book'):set_fields {
+        icons = make_icons(color),
+        localised_name = {'item-name.colored-book', {'colors.' .. name}},
+        show_in_library = false
+    }
 end
 
 Data {
     type = 'custom-input',
     name = 'picker-blueprint-colorchange',
-    key_sequence = 'CONTROL + SHIFT + B',
-    disabled = not use_books
+    key_sequence = 'CONTROL + SHIFT + B'
 }
