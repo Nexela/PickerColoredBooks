@@ -7,7 +7,7 @@
 -- "author": "Blank",
 -- "description": "This mod allows the user to change the color of a blueprint book.",
 
-local Data = require('__stdlib__/data/data')
+local Data = require('__stdlib__/stdlib/data/data')
 local colors = require('config')
 
 local function make_icons(color)
