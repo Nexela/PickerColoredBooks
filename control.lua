@@ -55,4 +55,4 @@ local function change_book_color(event)
 end
 Event.register('picker-blueprint-colorchange', change_book_color)
 
-remote.add_interface(script.mod_name, require('__PickerExtended__/interface'))
+remote.add_interface(script.mod_name, require('__stdlib__/stdlib/scripts/interface'))
